@@ -22,4 +22,19 @@ module.exports = {
      */
     errorOnUndefined: false
   },
+
+  /**
+   * Local development TalentLMS configurations
+   */
+  talent: {
+    /**
+     * API key to use
+     */
+    apiKey: null,
+
+    /**
+     * TalentLMS domain
+     */
+    domain: null
+  }
 };

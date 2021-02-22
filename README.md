@@ -1,14 +1,40 @@
-# Trifoia Nodejs Template
-Nodejs template used by Trifoia. Remember to replace this with project specific information!
-- This README file
-- Package.json
-  - name
-  - version
-  - description
-  - repository.url
-  - keywords
-  - bugs.url
-  - homepage
+# TalentLMS Reports
+Custom reporting engine for TalentLMS
+
+## Usage
+First, instantiate the module with your TalentLMS API credentials
+```js
+const TalentLMSReports = require('talentlms-reports');
+const reports = new TalentLMSReports({
+  apiKey: 'Your API key',
+  domain: 'Your domain',
+});
+```
+
+Then use the async `generate` method on the instantiated object to generate a report of the
+desired type
+```js
+const results = await reports.generate({type: 'group', groupId: '3'});
+```
+
+This package supports some advanced features, such as data caching. See the in-line documentation for more details
+
+## Report Types
+### Group
+Takes a `groupId` and returns the following information for each user in that group:
+
+| Property | Description |
+| ---- | - |
+| `id` | The user's TalentLMS id |
+| `email` | The user's email address |
+| `fullName` | The user's full name (first name + last name) |
+| `createdOn` | Date the user was first created |
+| `lastLogin` | When the user last logged in and did something |
+| `courses` | Array of course information for the user |
+| `courses[n].id` | Id of the course |
+| `courses[n].name` | Name of the course |
+| `courses[n].completionPercentage` | User's completion percentage between 0-100 |
+| `courses[n].completedOn` | Date when the user completed the course, if applicable |
 
 # Template Notes
 ## NPM Script Commands
