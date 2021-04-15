@@ -1,6 +1,6 @@
 {
   "name": "talentlms-reports",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Custom reporting engine for TalentLMS",
   "main": "index.js",
   "scripts": {
