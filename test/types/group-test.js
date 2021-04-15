@@ -76,6 +76,7 @@ describe('group', function() {
     assert.equal(result[0].fullName, 'firstName1 lastName1');
     assert.equal(result[0].createdOn, 'createdOn1');
     assert.equal(result[0].lastLogin, 'lastUpdated1');
+    assert.equal(result[0].groupName, 'groupName');
     assert.equal(result[0].courses[0].id, courseId);
     assert.equal(result[0].courses[0].name, 'courseName');
     assert.equal(result[0].courses[0].completionPercentage, 'completionPercentage1');
@@ -86,6 +87,7 @@ describe('group', function() {
     assert.equal(result[1].fullName, 'firstName2 lastName2');
     assert.equal(result[1].createdOn, 'createdOn2');
     assert.equal(result[1].lastLogin, 'lastUpdated2');
+    assert.equal(result[1].groupName, 'groupName');
     assert.equal(result[1].courses[0].id, courseId);
     assert.equal(result[1].courses[0].name, 'courseName');
     assert.equal(result[1].courses[0].completionPercentage, 'completionPercentage2');

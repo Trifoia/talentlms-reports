@@ -14,7 +14,7 @@ const getCourse = require('../talent/get-course.js');
 
 /**
  * Generates a report for an entire group
- * 
+ *
  * @param {GroupParams} params Group report generation parameters
  */
 const group = async (params) => {
@@ -40,6 +40,7 @@ const group = async (params) => {
       fullName: userDetail.first_name + ' ' + userDetail.last_name,
       createdOn: userDetail.created_on,
       lastLogin: userDetail.last_updated,
+      groupName: group.name,
       courses: courses.map((course) => {
         const courseUserDetail = course.users.find(courseUser => courseUser.id === user.id);
         return {
@@ -53,8 +54,6 @@ const group = async (params) => {
 
     return reportDatum;
   });
-
-
 
   return reportData;
 };
