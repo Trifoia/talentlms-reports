@@ -13,11 +13,19 @@ const getCourse = require('../talent/get-course.js');
  */
 
 /**
- * Generates a report for an entire group. Returns an array of results on success. If there is
- * an error generating the reports, an object will be returned with an `error` property with
+ * @typedef GroupReturns
+ * @property {object} group Group info from TalentLMS
+ * @property {object[]} results Report results per user
+ * @property {object=} error Error info. Only present if there was an error
+ */
+
+/**
+ * Generates a report for an entire group. Returns an object with group and result info. If there
+ * is an error generating the reports, an object will be returned with an `error` property with
  * details of the issue
  *
  * @param {GroupParams} params Group report generation parameters
+ * @returns {GroupReturns} Report results
  */
 const group = async (params) => {
   const {groupId, sdk} = params;
@@ -37,7 +45,7 @@ const group = async (params) => {
   }
 
   // Generate report data!
-  const reportData = group.users.map((user) => {
+  const results = group.users.map((user) => {
     const userDetail = allUsers.find(allUser => allUser.id === user.id);
     const reportDatum = {
       id: userDetail.id,
@@ -60,7 +68,7 @@ const group = async (params) => {
     return reportDatum;
   });
 
-  return reportData;
+  return {group, results};
 };
 
 module.exports = group;
