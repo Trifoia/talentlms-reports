@@ -93,4 +93,24 @@ describe('group', function() {
     assert.equal(result[1].courses[0].completionPercentage, 'completionPercentage2');
     assert.equal(result[1].courses[0].completedOn, 'completedOn2');
   });
+
+  it('should give useful error if group cannot be found', async () => {
+    const noGroupError = {
+      type: 'invalid_request_error',
+      message: 'The requested group does not exist'
+    };
+    debugSdk.group.retrieve = () => {
+      return {
+        error: noGroupError
+      };
+    };
+
+    const result = await group({
+      groupId,
+      sdk: debugSdk
+    });
+    
+    assert.equal(result.error.type, noGroupError.type);
+    assert.equal(result.error.message, noGroupError.message);
+  });
 });

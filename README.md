@@ -36,6 +36,8 @@ Takes a `groupId` and returns the following information for each user in that gr
 | `courses[n].completionPercentage` | User's completion percentage between 0-100 |
 | `courses[n].completedOn` | Date when the user completed the course, if applicable |
 
+If there is an error generating the report, an object will be returned with an `error` property that includes error details
+
 # Template Notes
 ## NPM Script Commands
 Run all tests
