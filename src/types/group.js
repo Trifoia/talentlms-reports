@@ -13,7 +13,9 @@ const getCourse = require('../talent/get-course.js');
  */
 
 /**
- * Generates a report for an entire group
+ * Generates a report for an entire group. Returns an array of results on success. If there is
+ * an error generating the reports, an object will be returned with an `error` property with
+ * details of the issue
  *
  * @param {GroupParams} params Group report generation parameters
  */
@@ -23,6 +25,9 @@ const group = async (params) => {
   // Get users and group information
   const allUsers = await getAllUsers(params);
   const group = await sdk.group.retrieve(groupId);
+
+  // Check for group retrieval error
+  if (group.error) return group;
 
   // Get info for each course in the group
   const courses = [];
