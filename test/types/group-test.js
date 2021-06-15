@@ -10,7 +10,7 @@ describe('group', function() {
   const groupInfo = {
     id: groupId,
     name: 'groupName',
-    users: [{id: '1',}, {id: '2',}],
+    users: [{id: '1'}, {id: '2'}, {id: '3'},],
     courses: [{id: courseId}]
   };
 
@@ -33,7 +33,16 @@ describe('group', function() {
             last_name: 'lastName2',
             created_on: 'createdOn2',
             last_updated: 'lastUpdated2'
-          }
+          },
+          // Include data for a user that doesn't have the correct course
+          {
+            id: '3',
+            email: 'email3',
+            first_name: 'firstName3',
+            last_name: 'lastName3',
+            created_on: 'createdOn3',
+            last_updated: 'lastUpdated3'
+          },
         ];
       }
     },
@@ -95,6 +104,17 @@ describe('group', function() {
     assert.equal(result.results[1].courses[0].name, 'courseName');
     assert.equal(result.results[1].courses[0].completionPercentage, 'completionPercentage2');
     assert.equal(result.results[1].courses[0].completedOn, 'completedOn2');
+
+    assert.equal(result.results[2].id, '3');
+    assert.equal(result.results[2].email, 'email3');
+    assert.equal(result.results[2].fullName, 'firstName3 lastName3');
+    assert.equal(result.results[2].createdOn, 'createdOn3');
+    assert.equal(result.results[2].lastLogin, 'lastUpdated3');
+    assert.equal(result.results[2].groupName, 'groupName');
+    assert.equal(result.results[2].courses[0].id, courseId);
+    assert.equal(result.results[2].courses[0].name, 'courseName');
+    assert.equal(result.results[2].courses[0].completionPercentage, '0');
+    assert.equal(result.results[2].courses[0].completedOn, '');
   });
 
   it('should give useful error if group cannot be found', async () => {

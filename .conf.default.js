@@ -35,6 +35,11 @@ module.exports = {
     /**
      * TalentLMS domain
      */
-    domain: null
+    domain: null,
+
+    /**
+     * If verbose logging should be used
+     */
+    verbose: false,
   }
 };
