@@ -31,7 +31,7 @@ const group = async (params) => {
   const {groupId, sdk} = params;
 
   // Get users and group information
-  const allUsers = await getAllUsers(params);
+  const allUsers = await getAllUsers({...params, cache: false});
   const group = await sdk.group.retrieve(groupId);
 
   // Check for group retrieval error
@@ -47,6 +47,11 @@ const group = async (params) => {
   // Generate report data!
   const results = group.users.map((user) => {
     const userDetail = allUsers.find(allUser => allUser.id === user.id);
+
+    if (!userDetail) {
+      throw new Error(`Could not get details for user ID: "${user.id}". Report generation failed`);
+    }
+
     const reportDatum = {
       id: userDetail.id,
       email: userDetail.email,
