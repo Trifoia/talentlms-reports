@@ -31,7 +31,7 @@ const group = async (params) => {
   const {groupId, sdk} = params;
 
   // Get users and group information
-  const allUsers = await getAllUsers({...params, cache: false});
+  const allUsers = await getAllUsers({...params});
   const group = await sdk.group.retrieve(groupId);
 
   // Check for group retrieval error

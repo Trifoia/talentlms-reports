@@ -15,11 +15,11 @@ let cachedUsers = null;
 
 /**
  * Retrieves all users from the TalentLMS api and caches the data for quick retrieval
- * 
- * @param {GetAllUsersParams} params 
+ *
+ * @param {GetAllUsersParams} params
  */
 const getAllUsers = async (params) => {
-  const {sdk, cache=true} = params;
+  const {sdk, cache = false} = params;
 
   // Reset the cache if we are asked
   if (!cache) {

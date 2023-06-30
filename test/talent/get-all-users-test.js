@@ -35,7 +35,8 @@ describe('get-users', function() {
             ];
           }
         }
-      }
+      },
+      cache: true,
     });
 
     assert.equal(actual[0], 'User 0');
@@ -56,7 +57,7 @@ describe('get-users', function() {
           }
         }
       },
-      cache: false
+      cache: false,
     });
 
     assert.equal(actual[0], 'User not cached 0');
@@ -74,7 +75,8 @@ describe('get-users', function() {
             ];
           }
         }
-      }
+      },
+      cache: true,
     });
 
     assert.equal(actual[0], 'User not cached 0');
@@ -95,7 +97,8 @@ describe('get-users', function() {
             ];
           }
         }
-      }
+      },
+      cache: true,
     });
 
     assert.equal(actual[0], 'User 0');

@@ -36,6 +36,7 @@ describe('get-course', function() {
         }
       },
       courseId,
+      cache: true,
     });
 
     assert.equal(actual, 'course info');
@@ -71,6 +72,7 @@ describe('get-course', function() {
         }
       },
       courseId,
+      cache: true,
     });
 
     assert.equal(actual, 'cache course info');
@@ -89,6 +91,7 @@ describe('get-course', function() {
         }
       },
       courseId,
+      cache: true,
     });
 
     assert.equal(actual, 'cleared course info');
