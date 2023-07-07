@@ -6,6 +6,9 @@
 
 const TalentLMSSdk = require('talentlms-sdk');
 
+const getAllUsers = require('./src/talent/get-all-users.js');
+const getCourse = require('./src/talent/get-course.js');
+
 const types = {
   group: require('./src/types/group.js')
 };
@@ -13,7 +16,7 @@ const types = {
 class TalentLMSReports {
   /**
    * Generates a new instance of the Talent LMS reporting engine
-   * 
+   *
    * @param {TalentOpts} sdkOpts Options for instantiation of the talent sdk
    */
   constructor(sdkOpts) {
@@ -32,7 +35,7 @@ class TalentLMSReports {
 
   /**
    * Generate a report
-   * 
+   *
    * @param {GenerateParams} params Parameters for report generation
    */
   async generate(params) {
@@ -43,6 +46,14 @@ class TalentLMSReports {
     }
 
     return types[params.type](params);
+  }
+
+  /**
+   * Clear the caches!
+   */
+  clearCache() {
+    getAllUsers.clear();
+    getCourse.clear();
   }
 }
 
