@@ -30,12 +30,12 @@ module.exports = {
     /**
      * API key to use
      */
-    apiKey: null,
+    apiKey: 'tSa2pb581IvVWMX3uQMAvNjaZk2Lfn',
 
     /**
      * TalentLMS domain
      */
-    domain: null,
+    domain: 'pyramid-trifoia.talentlms.com',
 
     /**
      * If verbose logging should be used
