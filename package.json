@@ -32,11 +32,10 @@
   },
   "dependencies": {
     "glob": "^11.0.0",
-    "glob": "^11.0.0",
     "talentlms-sdk": "^1.0.1"
   },
   "directories": {
-    "test": "test"
+    "test": "test",
     "talentlms-sdk": "github:trifoia/talentlms-sdk#v1.0.2"
   }
 }

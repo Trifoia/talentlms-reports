@@ -60,7 +60,7 @@ const group = async (params) => {
       lastLogin: userDetail.last_updated,
       groupName: group.name,
       courses: courses.map((course) => {
-        const courseUserDetail = course.users.find(courseUser => courseUser.id === user.id) ||
+        const courseUserDetail = (course.users || []).find(courseUser => courseUser.id === user.id) ||
           // Use a basic object if the user can't be found in the course
           {
             completion_percentage: '0',
